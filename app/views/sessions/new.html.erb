@@ -1,9 +1,9 @@
 <h1>Sign In</h1>
 
-<%= form_with(url: "/sessions", method: :post, model: @user) do |form| %>
+<%= form_with(url: "/sessions", method: :post) do |form| %>
   <div>
     <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :id, value: @phone %>
   </div>
 
   <br />

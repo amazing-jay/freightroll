@@ -3,7 +3,7 @@ class ShipmentsController < AuthenticatedController
 
   # GET /shipments or /shipments.json
   def index
-    @shipments = Shipment.all
+    @shipments = current_user.shipments.all
   end
 
   # GET /shipments/1 or /shipments/1.json
@@ -12,7 +12,7 @@ class ShipmentsController < AuthenticatedController
 
   # GET /shipments/new
   def new
-    @shipment = Shipment.new
+    @shipment = current_user.shipments.build
   end
 
   # GET /shipments/1/edit
@@ -21,11 +21,11 @@ class ShipmentsController < AuthenticatedController
 
   # POST /shipments or /shipments.json
   def create
-    @shipment = Shipment.new(shipment_params)
+    @shipment = current_user.shipments.build(shipment_params)
 
     respond_to do |format|
       if @shipment.save
-        format.html { redirect_to shipment_url(@shipment), notice: "Shipment was successfully created." }
+        format.html { redirect_to shipment_url(@shipment), notice: "Form Submitted Successfully ✓<br>You will receive a confirmation text shortly" }
         format.json { render :show, status: :created, location: @shipment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,11 +60,11 @@ class ShipmentsController < AuthenticatedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shipment
-      @shipment = Shipment.find(params[:id])
+      @shipment = current_user.shipments.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def shipment_params
-      params.require(:shipment).permit(:user_id, :name, :company_name, :reference_number)
+      params.require(:shipment).permit(:name, :company_name, :reference_number)
     end
 end

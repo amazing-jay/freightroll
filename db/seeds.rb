@@ -7,5 +7,4 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-User.create(phone: "1234567890")
 User.create(phone: "8016529526")

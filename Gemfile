@@ -49,6 +49,9 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'devise'
+gem 'foreman'
+gem 'simple_ruby_service'
+gem 'sidekiq', "~> 6.3.1"
 gem 'twilio-ruby'
 
 group :development, :test do

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => "/sidekiq"
+
   resources :sessions, except: :destroy
-  resources :shipments, only: [:new, :show]
+  resources :shipments #, only: [:new, :show] # should be this; but rails 7 be busted hard core
 end

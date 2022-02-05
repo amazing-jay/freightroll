@@ -1,0 +1,12 @@
+<%= form_with(url: "/sessions", method: :post, model: user) do |form| %>
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <br />
+
+  <div>
+    <%= form.submit 'Request SMS Code' %>
+  </div>
+<% end %>

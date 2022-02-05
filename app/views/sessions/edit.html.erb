@@ -1,0 +1,19 @@
+<h1>Please enter the verification code (just sent to your phone).</h1>
+
+<%= form_with(url: edit_session_path(id: @user.phone), method: :put, model: @user) do |form| %>
+  <div>
+    <%= form.label :verification_code, style: "display: block" %>
+    <%= form.text_field :verification_code %>
+  </div>
+
+  <br />
+
+  <div>
+    <%= form.submit 'Submit' %>
+  </div>
+<% end %>
+<br>
+
+<div>
+  <%= button_to "Send a new code", sessions_path, params: {id: @user.phone}, method: :post %>
+</div>

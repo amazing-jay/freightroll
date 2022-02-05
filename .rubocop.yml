@@ -1,0 +1,72 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.6
+  NewCops: enable
+  Exclude:
+    - "**/*.csv"
+
+Style/Documentation:
+  Enabled: true
+
+Naming/VariableNumber:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*.rake"
+    - "config/**/*"
+    - "Rakefile"
+    - "spec/**/*.rb"
+    -
+
+Layout/LineLength:
+  Max: 120
+
+Style/BlockComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/RedundantBegin:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Metrics/ClassLength:
+  Max: 500
+
+Metrics/BlockLength:
+  Max: 50
+
+Metrics/MethodLength:
+  Max: 50
+
+Style/HashSyntax:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Layout/DotPosition:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Style/SingleArgumentDig:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: true

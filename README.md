@@ -1,10 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
   `2.7.3`
 
@@ -33,12 +28,12 @@ Things you may want to cover:
 * Deployment instructions
   TBD
 
-* How I created the app
+## How I created the app
   - gem install rails
   - rails new freightroll
   - cp .ruby-* freightroll/
   - cd freightroll/
-  - # added to Gemfile:: [byebug, devise, foreman, factory_bot, rspec-rails, simple_ruby_service, sidekiq, twilio-ruby ]
+  - added to Gemfile:: [byebug, devise, foreman, factory_bot, rspec-rails, simple_ruby_service, sidekiq, twilio-ruby ]
   - cp ../../../.rubocop.yml .
   - rm -rf test
   - bundle install
@@ -51,29 +46,28 @@ Things you may want to cover:
   - rails db:migrate && rails db:test:prepare
   - rake spec
   - cp -r app/views/shipments app/views/sessions
+  - edited/created:
+      - app/controllers/authenticated_controller.rb
+      - app/controllers/sessions_controller.rb
+      - app/controllers/shipments_controller.rb
+      - app/jobs/send_mfa_code_job.rb
+      - app/jobs/send_shipment_confirmation_job.rb
+      - app/models/user.rb
+      - app/models/shipment.rb
+      - app/services/send_sms.rb
+      - app/views/layouts/application.html.erb
+      - db/migrate/20220205003111_devise_create_users.rb
+      - db/seeds.rb
+      - config/credentials.yml.enc
+      - config/initializers/devise.rb
+      - config/initializers/inflections.rb
+      - config/sidekiq.yml
+      - config/routes.rb
+      - Gemfile
+      - Procfile
+      - .gitignore
 
-- edited/created:
-    - app/controllers/authenticated_controller.rb
-    - app/controllers/sessions_controller.rb
-    - app/controllers/shipments_controller.rb
-    - app/jobs/send_mfa_code_job.rb
-    - app/jobs/send_shipment_confirmation_job.rb
-    - app/models/user.rb
-    - app/models/shipment.rb
-    - app/services/send_sms.rb
-    - app/views/layouts/application.html.erb
-    - db/migrate/20220205003111_devise_create_users.rb
-    - db/seeds.rb
-    - config/credentials.yml.enc
-    - config/initializers/devise.rb
-    - config/initializers/inflections.rb
-    - config/sidekiq.yml
-    - config/routes.rb
-    - Gemfile
-    - Procfile
-    - .gitignore
-
- - important routes
+ ## important routes
                                     root GET    /(.:format)                             sessions#index
                                          POST   /sessions(.:format)                     sessions#create
                              new_session GET    /sessions/new(.:format)                 sessions#new
@@ -85,7 +79,7 @@ Things you may want to cover:
                             new_shipment GET    /shipments/new(.:format)                shipments#new
 
 
-* Happy path test plan
+## Happy path test plan
   - request root_path, expect redirect to new_session
   - sign_in, then request root_path, expect redirect to new_shipment
   - request new_session, expect form elements rendered
@@ -99,7 +93,7 @@ Things you may want to cover:
   - request create_shipment with good data, expect redirect to show_shippment
 
 
-* Final notes
+## Final notes
   - rails 7 is borked
   - didn't have time to work on test suite
   - didn't bother pruning unnecessary actions/files (because rails borked)
